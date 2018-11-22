@@ -4,7 +4,7 @@
 #
 Name     : perl-Test-LongString
 Version  : 0.17
-Release  : 4
+Release  : 5
 URL      : https://cpan.metacpan.org/authors/id/R/RG/RGARCIA/Test-LongString-0.17.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/R/RG/RGARCIA/Test-LongString-0.17.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libt/libtest-longstring-perl/libtest-longstring-perl_0.17-1.debian.tar.xz
@@ -80,7 +80,7 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.26.1/Test/LongString.pm
+/usr/lib/perl5/vendor_perl/5.28.0/Test/LongString.pm
 
 %files dev
 %defattr(-,root,root,-)
