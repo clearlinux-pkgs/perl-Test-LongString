@@ -4,11 +4,11 @@
 #
 Name     : perl-Test-LongString
 Version  : 0.17
-Release  : 13
+Release  : 14
 URL      : https://cpan.metacpan.org/authors/id/R/RG/RGARCIA/Test-LongString-0.17.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/R/RG/RGARCIA/Test-LongString-0.17.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libt/libtest-longstring-perl/libtest-longstring-perl_0.17-1.debian.tar.xz
-Summary  : unknown
+Summary  : tests strings for equality, with more helpful failures
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
 Requires: perl-Test-LongString-license = %{version}-%{release}
@@ -24,6 +24,7 @@ INSTALLATION
 Summary: dev components for the perl-Test-LongString package.
 Group: Development
 Provides: perl-Test-LongString-devel = %{version}-%{release}
+Requires: perl-Test-LongString = %{version}-%{release}
 
 %description dev
 dev components for the perl-Test-LongString package.
@@ -42,7 +43,7 @@ license components for the perl-Test-LongString package.
 cd ..
 %setup -q -T -D -n Test-LongString-0.17 -b 1
 mkdir -p deblicense/
-mv %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Test-LongString-0.17/deblicense/
+cp -r %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Test-LongString-0.17/deblicense/
 
 %build
 export http_proxy=http://127.0.0.1:9/
