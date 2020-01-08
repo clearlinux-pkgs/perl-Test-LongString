@@ -4,14 +4,15 @@
 #
 Name     : perl-Test-LongString
 Version  : 0.17
-Release  : 18
+Release  : 19
 URL      : https://cpan.metacpan.org/authors/id/R/RG/RGARCIA/Test-LongString-0.17.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/R/RG/RGARCIA/Test-LongString-0.17.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libt/libtest-longstring-perl/libtest-longstring-perl_0.17-1.debian.tar.xz
-Summary  : tests strings for equality, with more helpful failures
+Summary  : unknown
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
 Requires: perl-Test-LongString-license = %{version}-%{release}
+Requires: perl-Test-LongString-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 
 %description
@@ -38,18 +39,28 @@ Group: Default
 license components for the perl-Test-LongString package.
 
 
+%package perl
+Summary: perl components for the perl-Test-LongString package.
+Group: Default
+Requires: perl-Test-LongString = %{version}-%{release}
+
+%description perl
+perl components for the perl-Test-LongString package.
+
+
 %prep
 %setup -q -n Test-LongString-0.17
-cd ..
-%setup -q -T -D -n Test-LongString-0.17 -b 1
+cd %{_builddir}
+tar xf %{_sourcedir}/libtest-longstring-perl_0.17-1.debian.tar.xz
+cd %{_builddir}/Test-LongString-0.17
 mkdir -p deblicense/
-cp -r %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Test-LongString-0.17/deblicense/
+cp -r %{_builddir}/debian/* %{_builddir}/Test-LongString-0.17/deblicense/
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
+export LANG=C.UTF-8
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
 make  %{?_smp_mflags}
@@ -59,7 +70,7 @@ else
 fi
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
@@ -68,7 +79,7 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-Test-LongString
-cp deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-Test-LongString/deblicense_copyright
+cp %{_builddir}/Test-LongString-0.17/deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-Test-LongString/50c898db19b21728a7d5ce7db783b70f1a19ee4f
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -81,7 +92,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/Test/LongString.pm
 
 %files dev
 %defattr(-,root,root,-)
@@ -89,4 +99,8 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/perl-Test-LongString/deblicense_copyright
+/usr/share/package-licenses/perl-Test-LongString/50c898db19b21728a7d5ce7db783b70f1a19ee4f
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/Test/LongString.pm
