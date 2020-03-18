@@ -4,7 +4,7 @@
 #
 Name     : perl-Test-LongString
 Version  : 0.17
-Release  : 19
+Release  : 20
 URL      : https://cpan.metacpan.org/authors/id/R/RG/RGARCIA/Test-LongString-0.17.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/R/RG/RGARCIA/Test-LongString-0.17.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libt/libtest-longstring-perl/libtest-longstring-perl_0.17-1.debian.tar.xz
@@ -79,7 +79,7 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-Test-LongString
-cp %{_builddir}/Test-LongString-0.17/deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-Test-LongString/50c898db19b21728a7d5ce7db783b70f1a19ee4f
+cp %{_builddir}/debian/copyright %{buildroot}/usr/share/package-licenses/perl-Test-LongString/50c898db19b21728a7d5ce7db783b70f1a19ee4f
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -103,4 +103,4 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.1/Test/LongString.pm
+/usr/lib/perl5/vendor_perl/5.30.2/Test/LongString.pm
