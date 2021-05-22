@@ -4,7 +4,7 @@
 #
 Name     : perl-Test-LongString
 Version  : 0.17
-Release  : 25
+Release  : 26
 URL      : https://cpan.metacpan.org/authors/id/R/RG/RGARCIA/Test-LongString-0.17.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/R/RG/RGARCIA/Test-LongString-0.17.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libt/libtest-longstring-perl/libtest-longstring-perl_0.17-1.debian.tar.xz
